@@ -3,11 +3,14 @@ import { SafeAreaWrap } from "../../components"
 import { useMovies } from "../../hooks"
 
 export const HomeScreen = () => {
-   const { isLoading, nowPlayings, } = useMovies()
+   const { isLoading, nowPlayings, upcoming, topRated, popular } = useMovies()
    
    console.log( isLoading );
    console.log( nowPlayings );
-
+   console.log( upcoming );
+   console.log( topRated );
+   console.log( popular );
+   
    return (
       <SafeAreaWrap>
          <Text> HomeScreen </Text>

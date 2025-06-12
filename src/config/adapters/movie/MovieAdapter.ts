@@ -5,7 +5,7 @@ const apiKey = config.MOVIE_KEY ?? ""
 const baseUrl = config.BASE_URL ?? ""
 
 export const MovieAdapter = new AxiosAdapter( {
-   baseUrl: baseUrl,
+   baseUrl: `${ baseUrl }/movie`,
    params: { 
       api_key: apiKey,
    },

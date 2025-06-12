@@ -1,17 +1,17 @@
 import { HttpAdapter } from "../../../config";
 import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
-import { MovieResponse } from "../../../infrastructure/types";
+import { MovieResponse } from "../../../infrastructure/types/movies/MovieResponse";
 
-export const moviesNowPlaying = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
+export const moviesTopRated = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
    try {
-      const nowPlaying = await fetcher.get<MovieResponse>( `/now_playing` )
+      const nowPlaying = await fetcher.get<MovieResponse>( `/top_rated` )
       
       const aux: MovieEntity[] = [ ...nowPlaying.results.map( MovieMapper.fromMovieToEntity ) ]
 
       return aux;
 
    } catch (error) {
-      throw new Error("Error in MoviesNowPlaying");
+      throw new Error("Error in MoviesTopRated");
    }
 }

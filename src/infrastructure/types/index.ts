@@ -3,8 +3,11 @@ export {
    type RootStackParam,
 } from "./Navigation"
 
-export { 
-   type NowPlayingResponse,
+export {
    type Movies,
    type Movie,
-} from "./movies"
+} from "./movies/movie"
+
+export { 
+   type MovieResponse,
+}  from "./movies/MovieResponse"

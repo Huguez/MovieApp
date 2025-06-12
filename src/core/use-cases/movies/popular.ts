@@ -3,7 +3,7 @@ import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
 import { MovieResponse } from "../../../infrastructure/types";
 
-export const moviesNowPlaying = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
+export const moviesPopular = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
    try {
       const nowPlaying = await fetcher.get<MovieResponse>( `/now_playing` )
       
@@ -12,6 +12,6 @@ export const moviesNowPlaying = async ( fetcher: HttpAdapter ): Promise<MovieEnt
       return aux;
 
    } catch (error) {
-      throw new Error("Error in MoviesNowPlaying");
+      throw new Error("Error in MoviesPopular");
    }
 }
