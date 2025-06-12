@@ -1,1 +1,1 @@
-export { WrapApp } from "./WrapApp"
+export { SafeAreaWrap } from "./SafeAreaWrap"

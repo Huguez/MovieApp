@@ -1,10 +1,11 @@
 import { Text } from "react-native"
 import { SafeAreaWrap } from "../../components"
 
-export const HomeScreen = () => {
+export const DetailsScreen = () => {
+
    return (
       <SafeAreaWrap>
-         <Text> HomeScreen </Text>
+         <Text> DetailsScreen </Text>
       </SafeAreaWrap>
    )
 }

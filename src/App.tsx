@@ -1,14 +1,19 @@
+import 'react-native-reanimated';
+import 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { WrapApp } from './components';
-import { HomeScreen } from './screens';
+import { NavigationStack } from './navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { enableScreens } from 'react-native-screens';
+
+enableScreens();
 
 function App(): React.JSX.Element {
 
    return (
       <SafeAreaProvider>
-         <WrapApp>
-            <HomeScreen />
-         </WrapApp>
+         <NavigationContainer>
+            <NavigationStack />
+         </NavigationContainer>
       </SafeAreaProvider>
    );
 }

@@ -6,11 +6,10 @@ interface props {
    children: ReactNode | ReactElement;
 }
 
-
-export const WrapApp = ( { children }: props ) => {
+export const SafeAreaWrap = ( { children }: props ) => {
    const { top, bottom } = useSafeAreaInsets();
    return (
-      <View style={ { marginTop: top, marginBottom: bottom, } }>
+      <View style={ { marginTop: top, marginBottom: bottom, } }>   
          { children }
       </View>
    )
