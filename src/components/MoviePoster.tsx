@@ -5,10 +5,13 @@ import { type RootStackParam } from "../infrastructure/types";
 
 interface props {
    movie: MovieEntity;
+   height: number;
+   width: number;
 }
 
-export const MoviePoster = ( { movie }: props ) => {
-   const { width, height } = useWindowDimensions()
+export const MoviePoster = ( { movie, height, width }: props ) => {
+   
+
    const navigation = useNavigation<NavigationProp<RootStackParam>>()
 
    const handleClick = ( id: number ) => navigation.navigate( "Details", { movieId: id } )
@@ -16,9 +19,9 @@ export const MoviePoster = ( { movie }: props ) => {
    return (
       <Pressable
          onPress={ () => handleClick( movie.id ) }
-         style={ ({pressed}) => ({ opacity: pressed ? 0.85 : 1 }   ) }
+         style={ ({pressed}) => ({ opacity: pressed ? 0.85 : 1, width, height } ) }
       >
-         <View style={ [ styles.imageWrap, { width: width / 2, height: height / 3 } ] }>
+         <View style={ styles.imageWrap  }>
             <Image
                style={ styles.image }
                source={{
@@ -33,20 +36,21 @@ export const MoviePoster = ( { movie }: props ) => {
 const styles = StyleSheet.create({
    image: {
       flex: 1,
-      objectFit: 'contain',
+      objectFit: 'cover',
       borderRadius: 20,
+      width: 'auto',
    },
    imageWrap: {
       flex: 1,
       borderRadius: 20,
+      marginLeft: 15,
       shadowColor: "#000",
       shadowOffset: {
          width: 0,
-         height: 10,
+         height: 2,
       },
       shadowOpacity: 0.25,
-      shadowRadius: 7,
-      elevation: 9,
-      marginLeft: 10
+      shadowRadius: 3.84,
+      elevation: 5,
    }
 })

@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native"
 
 export const globalColors = {
    primary:   "#274156", // #274156
@@ -10,3 +11,12 @@ export const globalColors = {
    background: "#ffffff",// #ffffff
 }
 
+export const globalStyles = StyleSheet.create({
+   titleCarrusel: {
+      fontSize: 30,
+      fontWeight: '400',
+      marginLeft: 10,
+      marginBottom: 10,
+      color: globalColors.dark
+   }
+})

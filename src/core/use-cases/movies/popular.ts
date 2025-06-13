@@ -5,7 +5,7 @@ import { MovieResponse } from "../../../infrastructure/types";
 
 export const moviesPopular = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
    try {
-      const nowPlaying = await fetcher.get<MovieResponse>( `/now_playing` )
+      const nowPlaying = await fetcher.get<MovieResponse>( `/popular` )
       
       const aux: MovieEntity[] = [ ...nowPlaying.results.map( MovieMapper.fromMovieToEntity ) ]
 

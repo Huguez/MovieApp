@@ -3,7 +3,6 @@ import { HomeScreen } from "../screens"
 import { SettingsNavigation, type RootStackParam } from "../infrastructure/types"
 import { DetailsScreen } from "../screens/details/DetailsScreen"
 
-
 const Stack = createStackNavigator<RootStackParam>()
 
 export const NavigationStack = () => {

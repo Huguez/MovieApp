@@ -1,16 +1,17 @@
-import { View } from 'react-native'
+import { useWindowDimensions, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
 import { MovieEntity } from '../infrastructure/entities';
 import { MoviePoster } from './MoviePoster';
 
 interface props {
    movies: MovieEntity[];
-   height: number;
 }
 
-export const PosterCarrusel = ( { height, movies = [] }: props ) => {
+export const PosterCarrusel = ( { movies }: props ) => {
+   const { width, height } = useWindowDimensions()
+   
    return (
-      <View style={ { height, } }>
+      <View style={ { height: height*(3/7), paddingVertical: 10 } }>
          <ScrollView
             horizontal
             showsHorizontalScrollIndicator={ false }
@@ -20,6 +21,8 @@ export const PosterCarrusel = ( { height, movies = [] }: props ) => {
                   <MoviePoster
                      key={ movie.id } 
                      movie={ movie }
+                     height={ height*(2/5) }
+                     width={ width / 2 }
                   />
                )
             }
