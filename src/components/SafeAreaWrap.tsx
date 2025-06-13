@@ -7,9 +7,17 @@ interface props {
 }
 
 export const SafeAreaWrap = ( { children }: props ) => {
-   const { top, bottom } = useSafeAreaInsets();
+   const { top, bottom, left, right } = useSafeAreaInsets();
+   
+   const myStyle = { 
+      marginTop: top, 
+      marginBottom: bottom, 
+      marginLeft: left, 
+      marginRight: right 
+   }
+
    return (
-      <View style={ { marginTop: top, marginBottom: bottom, } }>   
+      <View style={ myStyle }>   
          { children }
       </View>
    )
