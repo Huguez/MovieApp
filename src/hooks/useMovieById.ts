@@ -6,7 +6,7 @@ import { MovieAdapter } from "../config"
 export const useMovieById = ( id: number ) => {
    try {
       const [ isLoading, setIsLoading ] = useState<boolean>( true )
-      const [ movie, setMovie ] = useState<MovieEntity>( )
+      const [ movie, setMovie ] = useState<MovieEntity>()
 
       const initialLoad = async () => {
          setIsLoading( true );
