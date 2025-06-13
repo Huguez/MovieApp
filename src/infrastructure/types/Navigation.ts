@@ -4,7 +4,6 @@ import { StackNavigationOptions, StackNavigationProp } from "@react-navigation/s
 export interface Props {
    route: RouteProp<ParamListBase, string>;
    navigation: StackNavigationProp<ParamListBase, string, undefined>;
-   theme: ReactNavigation.Theme;
 }
 
 export type RootStackParam = {

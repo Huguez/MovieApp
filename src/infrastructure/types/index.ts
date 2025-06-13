@@ -9,5 +9,5 @@ export {
 } from "./movies/movie"
 
 export { 
-   type MovieResponse,
-}  from "./movies/MovieResponse"
+   type MoviesResponse,
+}  from "./movies/MoviesResponse"

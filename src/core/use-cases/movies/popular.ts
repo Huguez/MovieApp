@@ -1,7 +1,7 @@
 import { HttpAdapter } from "../../../config";
 import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
-import { MovieResponse } from "../../../infrastructure/types";
+import { MoviesResponse } from "../../../infrastructure/types";
 
 interface options {
    page?:  number;
@@ -10,7 +10,12 @@ interface options {
 
 export const moviesPopular = async ( fetcher: HttpAdapter, { page = 1, limit = 20 }: options ): Promise<MovieEntity[]> => {
    try {
-      const populars = await fetcher.get<MovieResponse>( `/popular?page=${page}&limit=${limit}` )
+      const populars = await fetcher.get<MoviesResponse>( `/popular`, {
+         params: {
+            page,
+            limit
+         }
+      } )
       
       const aux: MovieEntity[] = [ ...populars.results.map( MovieMapper.fromMovieToEntity ) ]
 

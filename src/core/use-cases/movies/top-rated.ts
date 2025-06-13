@@ -1,7 +1,7 @@
 import { HttpAdapter } from "../../../config";
 import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
-import { MovieResponse } from "../../../infrastructure/types/movies/MovieResponse";
+import { MoviesResponse } from "../../../infrastructure/types/movies/MoviesResponse";
 
 interface options {
    page?: number;
@@ -10,7 +10,7 @@ interface options {
 
 export const moviesTopRated = async ( fetcher: HttpAdapter, { page = 1, limit = 20 }: options ): Promise<MovieEntity[]> => {
    try {
-      const topRated = await fetcher.get<MovieResponse>( `/top_rated`, {
+      const topRated = await fetcher.get<MoviesResponse>( `/top_rated`, {
          params: {
             page,
             limit

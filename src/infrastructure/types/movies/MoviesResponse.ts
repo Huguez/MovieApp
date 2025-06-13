@@ -1,6 +1,6 @@
 import { Movies } from "./movie";
 
-export interface MovieResponse {
+export interface MoviesResponse {
    dates?:         Dates;      
    page:          number;
    results:       Movies;
