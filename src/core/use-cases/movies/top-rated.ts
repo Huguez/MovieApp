@@ -3,11 +3,21 @@ import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
 import { MovieResponse } from "../../../infrastructure/types/movies/MovieResponse";
 
-export const moviesTopRated = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
+interface options {
+   page?: number;
+   limit?: number;
+}
+
+export const moviesTopRated = async ( fetcher: HttpAdapter, { page = 1, limit = 20 }: options ): Promise<MovieEntity[]> => {
    try {
-      const nowPlaying = await fetcher.get<MovieResponse>( `/top_rated` )
+      const topRated = await fetcher.get<MovieResponse>( `/top_rated`, {
+         params: {
+            page,
+            limit
+         }
+      } )
       
-      const aux: MovieEntity[] = [ ...nowPlaying.results.map( MovieMapper.fromMovieToEntity ) ]
+      const aux: MovieEntity[] = [ ...topRated.results.map( MovieMapper.fromMovieToEntity ) ]
 
       return aux;
 

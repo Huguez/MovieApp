@@ -3,11 +3,20 @@ import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
 import { MovieResponse } from "../../../infrastructure/types";
 
-export const moviesUpcoming = async ( fetcher: HttpAdapter ): Promise<MovieEntity[]> => {
+interface options {
+   page?: number;
+   limit?: number;
+}
+
+export const moviesUpcoming = async ( fetcher: HttpAdapter, { page = 1, limit = 20 }: options ): Promise<MovieEntity[]> => {
    try {
-      const nowPlaying = await fetcher.get<MovieResponse>( `/upcoming` )
+      const upcoming = await fetcher.get<MovieResponse>( `/upcoming`, {
+         params: {
+            page, limit,
+         }
+      } )
       
-      const aux: MovieEntity[] = [ ...nowPlaying.results.map( MovieMapper.fromMovieToEntity ) ]
+      const aux: MovieEntity[] = [ ...upcoming.results.map( MovieMapper.fromMovieToEntity ) ]
 
       return aux;
 

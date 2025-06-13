@@ -3,18 +3,21 @@ import { useMovies } from "../../hooks"
 import { ScrollView } from "react-native-gesture-handler"
 
 export const HomeScreen = () => {
-   const { isLoading, nowPlayings, upcoming, topRated, popular } = useMovies()
+   const { 
+      nowPlayings, upcoming, topRated, popular,
+      popularNextPage, upcomingNextPage, topRatedNextPage
+    } = useMovies()
    
    return (
       <SafeAreaWrap>
          <ScrollView>
             <PosterCarrusel movies={ nowPlayings } />
 
-            <HorizontalCarrusel title={ "Upcoming" } movies={ upcoming } />
+            <HorizontalCarrusel title={ "Upcoming" } movies={ upcoming } loadNextMovies={ upcomingNextPage } />
 
-            <HorizontalCarrusel title={ "Top Rated" } movies={ topRated } />
+            <HorizontalCarrusel title={ "Top Rated" } movies={ topRated } loadNextMovies={ topRatedNextPage } />
             
-            <HorizontalCarrusel title={ "Most Popular" } movies={ popular } />
+            <HorizontalCarrusel title={ "Most Popular" } movies={ popular } loadNextMovies={ popularNextPage } />
          </ScrollView>
       </SafeAreaWrap>
    )
