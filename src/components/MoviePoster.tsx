@@ -11,7 +11,6 @@ interface props {
 
 export const MoviePoster = ( { movie, height, width }: props ) => {
    
-
    const navigation = useNavigation<NavigationProp<RootStackParam>>()
 
    const handleClick = ( id: number ) => navigation.navigate( "Details", { movieId: id } )

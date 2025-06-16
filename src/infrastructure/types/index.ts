@@ -12,8 +12,12 @@ export {
    type MoviesResponse,
 }  from "./movies/MoviesResponse"
 
-
 export {
    type FullMovie,
    type ProductionCompany,
 } from "./movies/FullMovie"
+
+export {
+   type CastResponse,
+   type Cast,
+} from "./movies/Cast";

@@ -11,7 +11,7 @@ export const DetailsScreen = ( { route } :Props) => {
 
    const { movieId } = route.params
    
-   const { isLoading, movie } = useMovieById( movieId )
+   const { isLoading, movie, cast } = useMovieById( movieId )
 
    if ( isLoading || !movie ) {
       return <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -23,7 +23,7 @@ export const DetailsScreen = ( { route } :Props) => {
       <SafeAreaWrap>
          <ScrollView>
             <MovieHeader movie={ movie } />
-            <MovieDetail movie={ movie } />
+            <MovieDetail movie={ movie } cast={ cast } />
          </ScrollView>
       </SafeAreaWrap>
    )

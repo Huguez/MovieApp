@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react"
 import * as UsesCases from "../core/use-cases"
 import { MovieAdapter } from "../config"
-import { FullMovie } from "../infrastructure/types"
+import type { Cast, FullMovie } from "../infrastructure/types"
 
 export const useMovieById = ( id: number ) => {
    try {
       const [ isLoading, setIsLoading ] = useState<boolean>( true )
       const [ movie, setMovie ] = useState<FullMovie>()
+      const [ cast, setCast ] = useState<Cast[]>( [] )
 
       const initialLoad = async () => {
          setIsLoading( true );
-         const aux = await UsesCases.MovieById( MovieAdapter, { id } )
-         setMovie( aux );
+         
+         const [ movieAux, castAux ] = await Promise.all( [
+            UsesCases.MovieById( MovieAdapter, { id } ),
+            UsesCases.MovieCastbyId( MovieAdapter, { id } )
+         ] )
+         setMovie( movieAux );
+         setCast( castAux );
          setIsLoading( false );
       }
 
@@ -22,6 +28,7 @@ export const useMovieById = ( id: number ) => {
       return {
          isLoading,
          movie,
+         cast
       }
    } catch (error) {
       throw new Error(" Error in useMovieById.")
