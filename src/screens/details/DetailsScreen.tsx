@@ -1,5 +1,4 @@
-import { ActivityIndicator, View } from "react-native"
-import { MovieDetail, MovieHeader, SafeAreaWrap } from "../../components"
+import { Loading, MovieDetail, MovieHeader, SafeAreaWrap } from "../../components"
 import { RootStackParam } from "../../infrastructure/types"
 import { StackScreenProps } from "@react-navigation/stack"
 import { useMovieById } from "../../hooks"
@@ -14,9 +13,7 @@ export const DetailsScreen = ( { route } :Props) => {
    const { isLoading, movie, cast } = useMovieById( movieId )
 
    if ( isLoading || !movie ) {
-      return <View style={{ flex: 1, justifyContent: 'center' }}>
-         <ActivityIndicator size={'large'} />
-      </View> 
+      return <Loading /> 
    }
 
    return (
