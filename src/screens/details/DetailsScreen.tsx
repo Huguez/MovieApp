@@ -1,8 +1,9 @@
-import { ActivityIndicator, Text, View } from "react-native"
-import { MovieHeader, SafeAreaWrap } from "../../components"
+import { ActivityIndicator, View } from "react-native"
+import { MovieDetail, MovieHeader, SafeAreaWrap } from "../../components"
 import { RootStackParam } from "../../infrastructure/types"
 import { StackScreenProps } from "@react-navigation/stack"
 import { useMovieById } from "../../hooks"
+import { ScrollView } from "react-native-gesture-handler"
 
 interface Props extends StackScreenProps<RootStackParam, 'Details'> {}
 
@@ -18,10 +19,12 @@ export const DetailsScreen = ( { route } :Props) => {
       </View> 
    }
 
-
    return (
       <SafeAreaWrap>
-         <MovieHeader movie={ movie } />
+         <ScrollView>
+            <MovieHeader movie={ movie } />
+            <MovieDetail movie={ movie } />
+         </ScrollView>
       </SafeAreaWrap>
    )
 }

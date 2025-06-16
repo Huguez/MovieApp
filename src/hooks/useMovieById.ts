@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { MovieEntity } from "../infrastructure/entities"
 import * as UsesCases from "../core/use-cases"
 import { MovieAdapter } from "../config"
+import { FullMovie } from "../infrastructure/types"
 
 export const useMovieById = ( id: number ) => {
    try {
       const [ isLoading, setIsLoading ] = useState<boolean>( true )
-      const [ movie, setMovie ] = useState<MovieEntity>()
+      const [ movie, setMovie ] = useState<FullMovie>()
 
       const initialLoad = async () => {
          setIsLoading( true );

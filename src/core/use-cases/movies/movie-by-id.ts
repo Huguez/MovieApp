@@ -1,17 +1,16 @@
 import { HttpAdapter } from "../../../config";
-import { MovieEntity } from "../../../infrastructure/entities";
 import { MovieMapper } from "../../../infrastructure/mappers";
-import { Movie } from "../../../infrastructure/types";
+import type { FullMovie, Movie } from "../../../infrastructure/types";
 
 interface options {
    id: number;
 }
 
-export const MovieById = async ( fetcher: HttpAdapter, { id }:options ): Promise<MovieEntity> => {
+export const MovieById = async ( fetcher: HttpAdapter, { id }:options ): Promise<FullMovie> => {
    try {
       const movie = await fetcher.get<Movie>( `/${ id }`,  )
 
-      return MovieMapper.fromMovieToEntity( movie );
+      return MovieMapper.fromMovieToFullMovie( movie ) ;
       
    } catch (error) {
       throw new Error("Error in MovieById")

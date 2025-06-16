@@ -11,3 +11,9 @@ export {
 export { 
    type MoviesResponse,
 }  from "./movies/MoviesResponse"
+
+
+export {
+   type FullMovie,
+   type ProductionCompany,
+} from "./movies/FullMovie"

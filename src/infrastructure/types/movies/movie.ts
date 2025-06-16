@@ -1,3 +1,4 @@
+import { type ProductionCompany } from "./FullMovie";
 
 export type Movies = Movie[];
 
@@ -16,4 +17,7 @@ export interface Movie {
    video:             boolean;
    vote_average:      number;
    vote_count:        number;
+   budget?:           number;
+   production_companies? : ProductionCompany[]
+   tagline?:          string;
 }

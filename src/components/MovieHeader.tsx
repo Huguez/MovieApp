@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, useWindowDimensions, View, Image, Text, Pressable } from 'react-native'
-import { MovieEntity } from '../infrastructure/entities'
 import { useNavigation } from '@react-navigation/native';
+import { FullMovie } from '../infrastructure/types';
 
 interface props {
-  movie: MovieEntity;
+  movie: FullMovie;
 };
 
 export const MovieHeader = ( { movie }: props ) => {
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
   posterImage: {
     flex: 1,
   },
-
   marginContainer: {
     marginHorizontal: 20,
     marginTop: 20,
